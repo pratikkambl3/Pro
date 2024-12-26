@@ -15,7 +15,7 @@ pipeline {
         }
 	stage('Image create'){
 	     steps {
-	       sh 'docker build -t 'ashokit/mavenwebapp' .'
+	       sh 'docker build -t ashokit/mavenwebapp .'
             }
 	}
 	stage('Image Push') {
