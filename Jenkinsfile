@@ -20,14 +20,6 @@ pipeline {
 	       sh 'docker build -t ashokit/mavenwebapp .'
             }
 	}
-	stage('Image Push') {
-	     steps {
-		withCredentials([usernamePassword(credentialsId: 'Docker-Credentials', passwordVariable: 'PWD', usernameVariable: 'USER')]) {
-    sh 'docker login -u ${USER} -p ${PWD}'
-    sh 'docker push ashokit/mavenwebapp'
-}
-	    }
-	}
 	stage('Deploy'){
 	     steps {
 		sh 'kubectl apply -f k8s-deploy.yml'
